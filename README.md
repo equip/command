@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/packagist/l/sparkphp/command.svg)](https://github.com/sparkphp/command/blob/master/LICENSE)
 [![Latest Stable Version](https://img.shields.io/packagist/v/sparkphp/command.svg)](https://packagist.org/packages/sparkphp/command)
 
-Interfaces and traits for creating a command layer in [Spark](http://sparkphp.github.io/).
+Interfaces and traits for creating a [command](https://sourcemaking.com/design_patterns/command) layer in [Spark](http://sparkphp.github.io/).
 Attempts to be [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/),
 and [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant.
 
