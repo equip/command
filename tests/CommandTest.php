@@ -81,7 +81,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
             ]);
 
         $command = $this->command->withOptions([
-            'user_id' => 42,
+            'user_id' => 0,
             'okay'    => true,
         ]);
 
