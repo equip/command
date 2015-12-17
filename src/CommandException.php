@@ -6,7 +6,7 @@ use RuntimeException;
 
 class CommandException extends RuntimeException
 {
-    const MISSING_OPTION = 5990;
+    const MISSING_OPTION = 500;
 
     /**
      * @param string $name
