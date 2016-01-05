@@ -9,6 +9,9 @@
             "homepage": "https://github.com/equip"
         }
     ],
+    "replace": {
+        "sparkphp/command": "self.version"
+    },
     "require": {
         "php": ">=5.5"
     },
