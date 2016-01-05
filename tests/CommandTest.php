@@ -1,8 +1,8 @@
 <?php
 
-namespace SparkTests\Command;
+namespace EquipTests\Command;
 
-use Spark\Command\AbstractCommand;
+use Equip\Command\AbstractCommand;
 
 class CommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -91,8 +91,8 @@ class CommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Spark\Command\CommandException
-     * @expectedExceptionCode \Spark\Command\CommandException::MISSING_OPTION
+     * @expectedException \Equip\Command\CommandException
+     * @expectedExceptionCode \Equip\Command\CommandException::MISSING_OPTION
      */
     public function testRequiredOptionsFailure()
     {
