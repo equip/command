@@ -1,6 +1,6 @@
 <?php
 
-namespace Spark\Command;
+namespace Equip\Command;
 
 use RuntimeException;
 

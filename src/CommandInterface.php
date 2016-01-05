@@ -1,13 +1,13 @@
 <?php
 
-namespace Spark\Command;
+namespace Equip\Command;
 
 interface CommandInterface
 {
     /**
      * Get the current options
      *
-     * @throws \Spark\Command\CommandException If any required options are missing
+     * @throws \Equip\Command\CommandException If any required options are missing
      *
      * @return array
      */
