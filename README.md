@@ -10,4 +10,4 @@ Interfaces and traits for creating a [command](https://sourcemaking.com/design_p
 Attempts to be [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/),
 and [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant.
 
-For more information, see [the documentation](http://equipframework.readthedocs.org/en/latest/command).
+For more information, see [the documentation](http://equipframework.readthedocs.org/en/latest/commands).
