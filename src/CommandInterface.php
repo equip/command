@@ -50,6 +50,13 @@ interface CommandInterface
     public function requiredOptions();
 
     /**
+     * Get a hash of default options
+     *
+     * @return array
+     */
+    public function defaultOptions();
+
+    /**
      * Execute the command using the current options
      *
      * @return mixed
