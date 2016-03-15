@@ -115,4 +115,23 @@ class CommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($output);
     }
+
+    public function testDefaultOptions()
+    {
+        $command = $this->getMockBuilder(AbstractCommand::class)
+            ->setMethods(['defaultOptions'])
+            ->getMockForAbstractClass();
+
+        $command
+            ->expects($this->once())
+            ->method('defaultOptions')
+            ->willReturn([
+                'test' => true,
+            ]);
+
+        $options = $command->options();
+
+        $this->assertArrayHasKey('test', $options);
+        $this->assertTrue($options['test']);
+    }
 }

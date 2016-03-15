@@ -24,6 +24,8 @@ abstract class AbstractCommand implements CommandInterface
             }
         }
 
+        $this->options += $this->defaultOptions();
+
         return $this->options;
     }
 
@@ -55,5 +57,13 @@ abstract class AbstractCommand implements CommandInterface
     public function hasOption($name)
     {
         return isset($this->options[$name]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function defaultOptions()
+    {
+        return [];
     }
 }
