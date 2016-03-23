@@ -90,10 +90,6 @@ class CommandTest extends TestCase
         $this->assertArrayHasKey('user_id', $options);
     }
 
-    /**
-     * @expectedException \Equip\Command\CommandException
-     * @expectedExceptionCode \Equip\Command\CommandException::MISSING_OPTION
-     */
     public function testRequiredOptionsFailure()
     {
         $this->command
@@ -102,6 +98,12 @@ class CommandTest extends TestCase
             ->willReturn([
                 'user_id',
             ]);
+
+        $this->setExpectedException(
+            CommandException::class,
+            '',
+            CommandException::MISSING_OPTION
+        );
 
         $this->command->options();
     }
