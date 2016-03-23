@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 _..._
 
-## 1.2.0 - ???
+## 1.2.0 - 2016-03-22
 
 - Added `getHttpStatus` to command exception
 - Report all missing options at once with command exception
