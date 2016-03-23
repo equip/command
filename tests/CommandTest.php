@@ -97,11 +97,12 @@ class CommandTest extends TestCase
             ->method('requiredOptions')
             ->willReturn([
                 'user_id',
+                'article_id',
             ]);
 
-        $this->setExpectedException(
+        $this->setExpectedExceptionRegExp(
             CommandException::class,
-            '',
+            '/required options not defined.+user_id.+article_id/i',
             CommandException::MISSING_OPTION
         );
 

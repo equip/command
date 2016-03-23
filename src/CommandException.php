@@ -8,10 +8,27 @@ class CommandException extends RuntimeException
 {
     const MISSING_OPTION = 2000;
 
+    /*
+     * @param array $names
+     *
+     * @return static
+     *
+     * @since 1.2.0
+     */
+    public static function missingOptions(array $names)
+    {
+        return new static(
+            sprintf('Required options not defined: `%s`', implode('`, `', $names)),
+            static::MISSING_OPTION
+        );
+    }
+
     /**
      * @param string $name
      *
      * @return static
+     *
+     * @deprecated 1.2.0
      */
     public static function missingOption($name)
     {
