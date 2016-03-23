@@ -10,6 +10,8 @@ _..._
 ## 1.2.0 - ???
 
 - Added `getHttpStatus` to command exception
+- Report all missing options at once with command exception
+- Deprecated `CommandException::missingOption` in favor of `missingOptions`
 
 ## 1.1.0 - 2016-03-14
 

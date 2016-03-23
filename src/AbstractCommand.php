@@ -17,10 +17,9 @@ abstract class AbstractCommand implements CommandInterface
         $required = $this->requiredOptions();
 
         if ($required) {
-            foreach ($required as $key) {
-                if (!isset($this->options[$key])) {
-                    throw CommandException::missingOption($key);
-                }
+            $missing = array_diff($required, array_keys($this->options));
+            if ($missing) {
+                throw CommandException::missingOptions($missing);
             }
         }
 
