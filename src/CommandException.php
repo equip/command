@@ -6,7 +6,7 @@ use RuntimeException;
 
 class CommandException extends RuntimeException
 {
-    const MISSING_OPTION = 500;
+    const MISSING_OPTION = 2000;
 
     /**
      * @param string $name
@@ -19,5 +19,19 @@ class CommandException extends RuntimeException
             sprintf('Required option `%s` is not defined', $name),
             static::MISSING_OPTION
         );
+    }
+
+    /**
+     * Get the HTTP status for the exception.
+     *
+     * @return integer
+     */
+    public function getHttpStatus()
+    {
+        if ($this->getCode() === static::MISSING_OPTION) {
+            return 400;
+        }
+
+        return 500;
     }
 }
