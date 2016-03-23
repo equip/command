@@ -1,10 +1,10 @@
 <?php
 
-namespace EquipTests\Command;
+namespace Equip\Command;
 
-use Equip\Command\AbstractCommand;
+use PHPUnit_Framework_TestCase as TestCase;
 
-class CommandTest extends \PHPUnit_Framework_TestCase
+class CommandTest extends TestCase
 {
     /**
      * @var AbstractCommand
