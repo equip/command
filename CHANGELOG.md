@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 _..._
 
+## 1.3.0 - 2016-04-05
+
+- Added `Command` and `Options` abstract classes
+- Deprecated `AbstractCommand` and `CommandInterface`
+
 ## 1.2.0 - 2016-03-22
 
 - Added `getHttpStatus` to command exception

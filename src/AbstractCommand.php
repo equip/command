@@ -2,6 +2,9 @@
 
 namespace Equip\Command;
 
+/**
+ * @deprecated since 1.3.0 in favor of Command
+ */
 abstract class AbstractCommand implements CommandInterface
 {
     /**

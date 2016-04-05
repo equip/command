@@ -6,7 +6,23 @@ use RuntimeException;
 
 class CommandException extends RuntimeException
 {
+    const NO_OPTIONS = 2000;
     const MISSING_OPTION = 2000;
+
+    /**
+     * @param Command $command
+     *
+     * @return static
+     *
+     * @since 1.3.0
+     */
+    public static function needsOptions(Command $command)
+    {
+        return new static(sprintf(
+            'No options have been set for the `%s` command',
+            get_class($command)
+        ), static::NO_OPTIONS);
+    }
 
     /*
      * @param array $names
