@@ -56,6 +56,15 @@ class CommandTest extends TestCase
         $this->assertSame($added, $replaced->options());
     }
 
+    public function testOption()
+    {
+        $command = $this->command->withOptions([
+            'foo' => 'bar',
+        ]);
+
+        $this->assertSame('bar', $command->option('foo'));
+    }
+
     public function testHasOption()
     {
         $command = $this->command->withOptions([

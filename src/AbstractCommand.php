@@ -31,6 +31,14 @@ abstract class AbstractCommand implements CommandInterface
     /**
      * @inheritDoc
      */
+    public function option($name)
+    {
+        return $this->options[$name];
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function withOptions(array $options)
     {
         $copy = clone $this;

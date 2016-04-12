@@ -14,6 +14,14 @@ interface CommandInterface
     public function options();
 
     /**
+     * Get a specific option
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function option($name);
+
+    /**
      * Get a copy with replaced options
      *
      * @param array $options
