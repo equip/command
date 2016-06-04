@@ -10,7 +10,7 @@ namespace Equip\Command;
 abstract class Command
 {
     /**
-     * @var OptionsInterface
+     * @var Options
      */
     private $options;
 
@@ -36,7 +36,7 @@ abstract class Command
     /**
      * Get the currently defined options.
      *
-     * @return OptionsInterface
+     * @return Options
      *
      * @throws CommandException
      *  If no options have been added to the command.
