@@ -7,6 +7,27 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 _..._
 
+## 2.0.0 - ?
+### Added
+
+- `OptionsInterface` for implementation of options as values objects
+- `OptionsSerializerTrait` for JSON serializing support for options
+- `OptionsRequiredTrait` for checking required values for options
+
+### Changed
+
+- `CommandInterface` was simplified for usage with option value objects
+
+### Removed
+
+- `Command` and `Options` were deemed to be a bad implementation of value objects
+- `ImmutableException` was only used by `Options`
+- `CommandException::needsOptions()` was only used by `Command`
+
+### Deprecated
+
+- `AbstractCommand` will be removed in 3.0.0
+
 ## 1.3.0 - 2016-06-04
 
 - Added `Command` and `Options` abstract classes

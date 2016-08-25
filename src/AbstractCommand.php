@@ -13,7 +13,16 @@ abstract class AbstractCommand implements CommandInterface
     private $options = [];
 
     /**
+     * Get a list of options that must be defined
+     *
+     * @return array
+     */
+    abstract public function requiredOptions();
+
+    /**
      * @inheritDoc
+     *
+     * @return array
      */
     public function options()
     {
