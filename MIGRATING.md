@@ -11,9 +11,7 @@ command system that is flexible and can be used in modern and legacy environment
 
 ### Creating an Options Value Object
 
-All options must implement `OptionsInterface`, which includes the ability to
-serialize the value object to JSON. The `OptionsSerializerTrait` can provide
-this functionality.
+All options must implement `OptionsInterface`.
 
 Options must validate the values passed during construction. If you are using an
 array to hydrate the options, the `OptionsRequiredTrait` will help you validate
@@ -22,12 +20,10 @@ requirements. Type checking should also be done when suitable.
 ```php
 use Equip\Command\OptionsInterface;
 use Equip\Command\OptionsRequiredTrait;
-use Equip\Command\OptionsSerializerTrait;
 
 class LoginOptions implements OptionsInterface
 {
     use OptionsRequiredTrait;
-    use OptionsSerializerTrait;
 
     private $email;
     private $password;
