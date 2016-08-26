@@ -3,111 +3,107 @@ Migrating
 
 Use this document to help you transition away from deprecated code.
 
-## Switching from AbstractCommand to Command
+## Switching from AbstractCommand to CommandInterface
 
-Version 1.3.0 introduces a new `Command` class that replaces `AbstractCommand`.
-It also introduces a new, immutable `Options` class that is used to hold options
-for commands.
+Version 2.0.0 simplifies the `CommandInterface` and adds an `OptionsInterface`.
+Combined, these two interfaces represent the fundamental requirements of a
+command system that is flexible and can be used in modern and legacy environments.
 
-### Updating Commands
+### Creating an Options Value Object
 
-Commands that used to be defined as:
+All options must implement `OptionsInterface`, which includes the ability to
+serialize the value object to JSON. The `OptionsSerializerTrait` can provide
+this functionality.
 
-```php
-use Equip\Command\AbstractCommand;
-
-class LoginCommand extends AbstractCommand
-{
-    // ...
-}
-```
-
-Should now be defined as:
+Options must validate the values passed during construction. If you are using an
+array to hydrate the options, the `OptionsRequiredTrait` will help you validate
+requirements. Type checking should also be done when suitable.
 
 ```php
-use Equip\Command\Command;
+use Equip\Command\OptionsInterface;
+use Equip\Command\OptionsRequiredTrait;
+use Equip\Command\OptionsSerializerTrait;
 
-class LoginCommand extends Command
+class LoginOptions implements OptionsInterface
 {
-    // ...
-}
-```
+    use OptionsRequiredTrait;
+    use OptionsSerializerTrait;
 
-This will also require modification in how commands use options internally.
-Previously the `execute()` method would access options as an array:
+    private $email;
+    private $password;
 
-```php
-public function execute()
-{
-    $options = $this->options();
-
-    $this->checkCredentials($options['email'], $options['password']);
-
-    // ...
-}
-```
-
-Instead, the options will now be a read-only object:
-
-```
-public function execute()
-{
-    $options = $this->options();
-
-    $this->checkCredentials($options->email, $options->password);
-
-    // ...
-}
-```
-
-Any attempt to modify the options will throw an `ImmutableException`.
-
-### Creating Options
-
-Command options are now defined as separate classes. These classes must extend
-the `Options` class:
-
-```php
-use Equip\Command\Options;
-
-final class LoginOptions extends Options
-{
-    protected $email;
-    protected $password;
-    protected $remember = false;
-
-    /**
-     * @inheritdoc
-     */
-    public function required()
+    public function __construct(array $options)
     {
-        return [
+        $this->checkRequired($options, [
             'email',
             'password',
-        ];
+        ]);
+
+        $this->email = $options['email'];
+        $this->password = $options['password'];
+    }
+
+    public function email()
+    {
+        return $this->email;
+    }
+
+    public function password()
+    {
+        return $this->password;
     }
 }
 ```
 
-All valid options are defined as `protected` class properties. Optional properties
-can have default values.
+### Creating a Command
 
-### Using Commands
+All commands must implement the `CommandInterface` instead of `AbstractCommand`.
 
-Where calling code would previously be:
+Commands should be immutable and return a copy when `withOptions()` is called.
+The `CommandImmutableOptionsTrait` can provide this functionality.
 
 ```php
-$command = $command->withOptions([
-    'email' => 'user@example.net',
-    'password' => 'very-secret',
-]);
+use Equip\Command\CommandInterface;
+use Equip\Command\CommandImmutableOptionsTrait;
+
+class LoginCommand implements CommandInterface
+{
+    use CommandImmutableOptionsTrait;
+
+    /**
+     * @var LoginOptions
+     */
+    private $options;
+
+    public function withOptions(LoginOptions $options)
+    {
+        return $this->copyWithOptions($options);
+    }
+
+    /**
+     * @return object
+     */
+    public function execute()
+    {
+        $user = $this->getUser($this->options->email());
+
+        $this->checkCredentials($user, $this->options->password());
+
+        return $user;
+    }
+}
 ```
 
-The new options class must be used instead:
+### Executing a Command
 
 ```php
 $options = new LoginOptions([
     'email' => 'user@example.com',
-    'password' => 'very-secret',
+    'password' => 'very secret',
 ]);
+
+$command = new LoginCommand();
 $command = $command->withOptions($options);
+
+$user = $command->execute();
+```
