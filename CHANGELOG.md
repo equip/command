@@ -7,11 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 _..._
 
-## 2.0.0 - ?
+## 2.0.0 - 2016-08-26
 ### Added
 
 - `CommandImmutableOptionsTrait` for copying commands when setting options
 - `OptionsInterface` for implementation of options as values objects
+- `OptionsHydrateTrait` for hydrating option properties
 - `OptionsSerializerTrait` for JSON serializing support for options
 - `OptionsRequiredTrait` for checking required values for options
 
