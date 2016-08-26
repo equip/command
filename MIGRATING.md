@@ -59,11 +59,17 @@ class LoginOptions implements OptionsInterface
 
 All commands must implement the `CommandInterface` instead of `AbstractCommand`.
 
+Commands should be immutable and return a copy when `withOptions()` is called.
+The `CommandImmutableOptionsTrait` can provide this functionality.
+
 ```php
 use Equip\Command\CommandInterface;
+use Equip\Command\CommandImmutableOptionsTrait;
 
 class LoginCommand implements CommandInterface
 {
+    use CommandImmutableOptionsTrait;
+
     /**
      * @var LoginOptions
      */
@@ -71,10 +77,7 @@ class LoginCommand implements CommandInterface
 
     public function withOptions(LoginOptions $options)
     {
-        $copy = clone $this;
-        $copy->options = $options;
-
-        return $copy;
+        return $this->copyWithOptions($options);
     }
 
     /**

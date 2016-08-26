@@ -10,6 +10,7 @@ _..._
 ## 2.0.0 - ?
 ### Added
 
+- `CommandImmutableOptionsTrait` for copying commands when setting options
 - `OptionsInterface` for implementation of options as values objects
 - `OptionsSerializerTrait` for JSON serializing support for options
 - `OptionsRequiredTrait` for checking required values for options
