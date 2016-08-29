@@ -20,7 +20,7 @@ trait OptionsRequiredTrait
      */
     private function checkRequired(array $options, array $keys)
     {
-        $missing = array_diff_key(array_flip($keys), $options);
+        $missing = array_keys(array_diff_key(array_flip($keys), $options));
 
         if (!empty($missing)) {
             throw CommandException::missingOptions($missing);

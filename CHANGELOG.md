@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 _..._
 
+## 2.0.1 - 2016-08-29
+### Fixed
+- `OptionsRequiredTrait` to send the correct missing fields when throwing an exception
+
 ## 2.0.0 - 2016-08-26
 ### Added
 

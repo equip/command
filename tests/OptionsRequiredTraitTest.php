@@ -23,7 +23,7 @@ class OptionsRequiredTraitTest extends TestCase
     {
         $this->setExpectedExceptionRegExp(
             CommandException::class,
-            '/required options/i',
+            '/required options.*test/i',
             CommandException::MISSING_OPTION
         );
 
